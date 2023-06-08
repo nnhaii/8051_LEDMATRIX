@@ -1,10 +1,14 @@
+	/******************************************************************************
+	* Ten tep:		delay.h
+	* Tac gia:	 	Nguyen Nam Hai
+	* Ngay:				01-04-2023
+	******************************************************************************/
 #ifndef __MAIN_H
 #define __MAIN_H
 
 #include <stdio.h>
 #include <math.h>
 #include <regx52.h>
-
 #include <delay.h>
 
 unsigned char code so[10][8] = {

@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    06/09/2023  01:27:02  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    06/09/2023  01:35:37  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj, .\Objects\i2c.obj, .\Objects\ds1307.obj TO .\Object
->> s\main PRINT (.\Listings\main.m51) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj, .\Objects\i2c.obj TO .\Objects\main PRINT (.\Listin
+>> gs\main.m51) RAMSIZE (256)
 
 
 MEMORY MODEL: SMALL
@@ -13,12 +13,10 @@ INPUT MODULES INCLUDED:
   .\Objects\main.obj (MAIN)
   .\Objects\delay.obj (DELAY)
   .\Objects\i2c.obj (I2C)
-  .\Objects\ds1307.obj (DS1307)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CSTOPTR)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
 
 
@@ -31,11 +29,7 @@ LINK MAP OF MODULE:  .\Objects\main (MAIN)
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
             DATA    0008H     0007H     UNIT         _DATA_GROUP_
-            DATA    000FH     0006H     UNIT         ?DT?DS1307
-            DATA    0015H     0003H     UNIT         ?DT?_DS1307_READ?DS1307
-            DATA    0018H     0002H     UNIT         ?DT?_DS1307_WRITE?MAIN
-            DATA    001AH     0002H     UNIT         ?DT?_DS1307_WRITE?DS1307
-                    001CH     0004H                  *** GAP ***
+                    000FH     0011H                  *** GAP ***
             BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
                     0020H.1   0000H.7                *** GAP ***
             DATA    0021H     0049H     UNIT         ?DT?MAIN
@@ -44,36 +38,28 @@ LINK MAP OF MODULE:  .\Objects\main (MAIN)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     00EBH     UNIT         ?PR?MAIN?MAIN
-            CODE    00EEH     00B6H     UNIT         ?C?LIB_CODE
-            CODE    01A4H     008CH     UNIT         ?C_C51STARTUP
-            CODE    0230H     0050H     UNIT         ?CO?MAIN
-            CODE    0280H     0047H     UNIT         ?PR?_DS1307_READ?MAIN
-            CODE    02C7H     0047H     UNIT         ?PR?_DS1307_READ?DS1307
-            CODE    030EH     003DH     UNIT         ?PR?_IC2DISPLAY_2?MAIN
-            CODE    034BH     0033H     UNIT         ?PR?_SEND_DATA_COT?MAIN
-            CODE    037EH     0033H     UNIT         ?PR?_SEND_DATA_COT_1?MAIN
-            CODE    03B1H     0032H     UNIT         ?PR?_IC2DISPLAY_1?MAIN
-            CODE    03E3H     0030H     UNIT         ?PR?_DS1307_WRITE?MAIN
-            CODE    0413H     0030H     UNIT         ?PR?_DS1307_WRITE?DS1307
-            CODE    0443H     002DH     UNIT         ?C_INITSEG
-            CODE    0470H     002AH     UNIT         ?PR?DS1307_SET?MAIN
-            CODE    049AH     002AH     UNIT         ?PR?DS1307_SET?DS1307
-            CODE    04C4H     0023H     UNIT         ?PR?I2C_READ?I2C
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 2
-
-
-            CODE    04E7H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
-            CODE    0507H     0020H     UNIT         ?PR?_I2C_WRITE?I2C
-            CODE    0527H     0016H     UNIT         ?PR?DS1307_GETTIME?MAIN
-            CODE    053DH     0016H     UNIT         ?PR?DS1307_GETDATE?MAIN
-            CODE    0553H     0016H     UNIT         ?PR?DS1307_GETTIME?DS1307
-            CODE    0569H     0016H     UNIT         ?PR?DS1307_GETDATE?DS1307
-            CODE    057FH     0009H     UNIT         ?PR?I2C_TIME_START?I2C
-            CODE    0588H     0009H     UNIT         ?PR?I2C_TIME_STOP?I2C
+            CODE    00EEH     008CH     UNIT         ?C_C51STARTUP
+            CODE    017AH     0061H     UNIT         ?C?LIB_CODE
+            CODE    01DBH     0050H     UNIT         ?CO?MAIN
+            CODE    022BH     0047H     UNIT         ?PR?_DS1307_READ?MAIN
+            CODE    0272H     003DH     UNIT         ?PR?_DISPLAY_2?MAIN
+            CODE    02AFH     0033H     UNIT         ?PR?_SEND_DATA_COT?MAIN
+            CODE    02E2H     0033H     UNIT         ?PR?_SEND_DATA_COT_1?MAIN
+            CODE    0315H     0032H     UNIT         ?PR?_DISPLAY_1?MAIN
+            CODE    0347H     002DH     UNIT         ?C_INITSEG
+            CODE    0374H     0023H     UNIT         ?PR?I2C_READ?I2C
+            CODE    0397H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    03B7H     0020H     UNIT         ?PR?_I2C_WRITE?I2C
+            CODE    03D7H     0016H     UNIT         ?PR?DS1307_GETTIME?MAIN
+            CODE    03EDH     0009H     UNIT         ?PR?I2C_TIME_START?I2C
+            CODE    03F6H     0009H     UNIT         ?PR?I2C_TIME_STOP?I2C
 
 
 
 OVERLAY MAP OF MODULE:   .\Objects\main (MAIN)
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:35:37  PAGE 2
 
 
 SEGMENT                              BIT_GROUP          DATA_GROUP 
@@ -87,8 +73,8 @@ SEGMENT                              BIT_GROUP          DATA_GROUP
   +--> ?PR?DS1307_GETTIME?MAIN
   +--> ?PR?_DS1307_READ?MAIN
   +--> ?CO?MAIN
-  +--> ?PR?_IC2DISPLAY_1?MAIN
-  +--> ?PR?_IC2DISPLAY_2?MAIN
+  +--> ?PR?_DISPLAY_1?MAIN
+  +--> ?PR?_DISPLAY_2?MAIN
   +--> ?PR?_SEND_DATA_COT?MAIN
   +--> ?PR?_SEND_DATA_COT_1?MAIN
   +--> ?PR?_DELAY_MS?DELAY
@@ -104,27 +90,9 @@ SEGMENT                              BIT_GROUP          DATA_GROUP
 
 ?PR?I2C_READ?I2C                  0020H.0  0000H.1    -----    -----
 
-?PR?_IC2DISPLAY_1?MAIN            -----    -----      0008H    0006H
+?PR?_DISPLAY_1?MAIN               -----    -----      0008H    0006H
 
-?PR?_IC2DISPLAY_2?MAIN            -----    -----      0008H    0007H
-
-
-
-IGNORED SYMBOLS:
-   DAY
-   DS1307_GETDATE
-   DS1307_GETTIME
-   DS1307_SET
-   HOUR
-   MIN
-   MONTH
-   SEC
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 3
-
-
-   YEAR
-   _DS1307_READ
-   _DS1307_WRITE
+?PR?_DISPLAY_2?MAIN               -----    -----      0008H    0007H
 
 
 
@@ -145,111 +113,77 @@ SYMBOL TABLE OF MODULE:  .\Objects\main (MAIN)
   C:0003H         PUBLIC        main
   B:0080H.6       PUBLIC        DS_1
   D:0021H         PUBLIC        month
+  C:0315H         PUBLIC        _DISPLAY_1
+  C:0272H         PUBLIC        _DISPLAY_2
   B:0080H.5       PUBLIC        ST_CP_1
-  C:034BH         PUBLIC        _Send_data_cot
+  C:02AFH         PUBLIC        _Send_data_cot
   D:0022H         PUBLIC        year
   D:0023H         PUBLIC        sec
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:35:37  PAGE 3
+
+
   D:0024H         PUBLIC        t_h
   D:0034H         PUBLIC        day
   D:0035H         PUBLIC        hour
   D:0036H         PUBLIC        t_m
-  C:0280H         PUBLIC        _DS1307_Read
-  C:037EH         PUBLIC        _Send_data_cot_1
+  C:022BH         PUBLIC        _DS1307_Read
+  C:02E2H         PUBLIC        _Send_data_cot_1
   D:0046H         PUBLIC        min
-  C:03E3H         PUBLIC        _DS1307_Write
   D:0047H         PUBLIC        b
-  C:0230H         PUBLIC        so
-  C:053DH         PUBLIC        DS1307_GetDate
+  C:01DBH         PUBLIC        so
   D:0067H         PUBLIC        i
   D:0068H         PUBLIC        j
-  C:03B1H         PUBLIC        _IC2DISPLAY_1
   D:0069H         PUBLIC        k
-  C:030EH         PUBLIC        _IC2DISPLAY_2
-  C:0470H         PUBLIC        DS1307_Set
-  C:0527H         PUBLIC        DS1307_GetTime
-  -------         PROC          _DS1307_WRITE
-  D:0018H         SYMBOL        addr
-  D:0019H         SYMBOL        dat
-  -------         DO            
-  D:0006H         SYMBOL        temp
-  -------         ENDDO         
-  C:03E3H         LINE#         46
-  C:03E7H         LINE#         48
-  C:03EBH         LINE#         49
-  C:03FEH         LINE#         50
-  C:0401H         LINE#         51
-  C:0406H         LINE#         52
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 4
-
-
-  C:040BH         LINE#         53
-  C:0410H         LINE#         54
-  -------         ENDPROC       _DS1307_WRITE
+  C:03D7H         PUBLIC        DS1307_GetTime
   -------         PROC          _DS1307_READ
   D:0008H         SYMBOL        addr
   -------         DO            
   D:0002H         SYMBOL        tm
   D:0009H         SYMBOL        ret
   -------         ENDDO         
-  C:0280H         LINE#         56
-  C:0282H         LINE#         58
-  C:0285H         LINE#         59
-  C:028AH         LINE#         60
-  C:028FH         LINE#         61
-  C:0292H         LINE#         62
-  C:0297H         LINE#         63
-  C:029FH         LINE#         64
-  C:02A2H         LINE#         65
-  C:02A2H         LINE#         66
-  C:02C4H         LINE#         67
-  C:02C6H         LINE#         68
+  C:022BH         LINE#         53
+  C:022DH         LINE#         55
+  C:0230H         LINE#         56
+  C:0235H         LINE#         57
+  C:023AH         LINE#         58
+  C:023DH         LINE#         59
+  C:0242H         LINE#         60
+  C:024AH         LINE#         61
+  C:024DH         LINE#         62
+  C:024DH         LINE#         63
+  C:026FH         LINE#         64
+  C:0271H         LINE#         65
   -------         ENDPROC       _DS1307_READ
-  -------         PROC          DS1307_SET
-  C:0470H         LINE#         69
-  C:0470H         LINE#         71
-  C:0477H         LINE#         72
-  C:047EH         LINE#         73
-  C:0485H         LINE#         74
-  C:048CH         LINE#         75
-  C:0493H         LINE#         76
-  -------         ENDPROC       DS1307_SET
   -------         PROC          DS1307_GETTIME
-  C:0527H         LINE#         78
-  C:0527H         LINE#         80
-  C:052EH         LINE#         81
-  C:0535H         LINE#         82
-  C:053CH         LINE#         83
+  C:03D7H         LINE#         77
+  C:03D7H         LINE#         79
+  C:03DEH         LINE#         80
+  C:03E5H         LINE#         81
+  C:03ECH         LINE#         82
   -------         ENDPROC       DS1307_GETTIME
-  -------         PROC          DS1307_GETDATE
-  C:053DH         LINE#         84
-  C:053DH         LINE#         86
-  C:0544H         LINE#         87
-  C:054BH         LINE#         88
-  C:0552H         LINE#         89
-  -------         ENDPROC       DS1307_GETDATE
   -------         PROC          MAIN
-  C:0003H         LINE#         91
-  C:0003H         LINE#         93
   C:0003H         LINE#         94
-  C:0006H         LINE#         95
-  C:000DH         LINE#         96
-  C:0014H         LINE#         98
-  C:0034H         LINE#         99
-  C:0056H         LINE#         100
-  C:0076H         LINE#         101
-  C:0098H         LINE#         103
-  C:00A9H         LINE#         104
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 5
+  C:0003H         LINE#         97
+  C:0006H         LINE#         98
+  C:0006H         LINE#         99
+  C:000DH         LINE#         100
+  C:0014H         LINE#         102
+  C:0034H         LINE#         103
+  C:0056H         LINE#         104
+  C:0076H         LINE#         105
+  C:0098H         LINE#         107
+  C:00A9H         LINE#         108
+  C:00A9H         LINE#         109
+  C:00B1H         LINE#         110
+  C:00B9H         LINE#         111
+  C:00C8H         LINE#         112
+  C:00D7H         LINE#         113
+  C:00DEH         LINE#         114
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:35:37  PAGE 4
 
 
-  C:00A9H         LINE#         105
-  C:00B1H         LINE#         106
-  C:00B9H         LINE#         107
-  C:00C8H         LINE#         108
-  C:00D7H         LINE#         109
-  C:00DEH         LINE#         110
-  C:00E4H         LINE#         111
-  C:00EAH         LINE#         112
+  C:00E4H         LINE#         115
+  C:00EAH         LINE#         116
   -------         ENDPROC       MAIN
   -------         PROC          _SEND_DATA_COT
   D:0006H         SYMBOL        _data
@@ -257,26 +191,26 @@ SYMBOL TABLE OF MODULE:  .\Objects\main (MAIN)
   D:0005H         SYMBOL        n
   D:0002H         SYMBOL        tam
   -------         ENDDO         
-  C:034BH         LINE#         116
-  C:034BH         LINE#         120
-  C:034DH         LINE#         121
-  C:034FH         LINE#         122
-  C:0351H         LINE#         123
-  C:035DH         LINE#         124
-  C:035DH         LINE#         125
-  C:0361H         LINE#         126
-  C:0368H         LINE#         128
-  C:036CH         LINE#         129
-  C:036CH         LINE#         130
-  C:036EH         LINE#         131
-  C:0370H         LINE#         132
-  C:0372H         LINE#         133
-  C:0372H         LINE#         135
-  C:0374H         LINE#         136
-  C:0376H         LINE#         137
-  C:0379H         LINE#         139
-  C:037BH         LINE#         140
-  C:037DH         LINE#         141
+  C:02AFH         LINE#         120
+  C:02AFH         LINE#         124
+  C:02B1H         LINE#         125
+  C:02B3H         LINE#         126
+  C:02B5H         LINE#         127
+  C:02C1H         LINE#         128
+  C:02C1H         LINE#         129
+  C:02C5H         LINE#         130
+  C:02CCH         LINE#         132
+  C:02D0H         LINE#         133
+  C:02D0H         LINE#         134
+  C:02D2H         LINE#         135
+  C:02D4H         LINE#         136
+  C:02D6H         LINE#         137
+  C:02D6H         LINE#         139
+  C:02D8H         LINE#         140
+  C:02DAH         LINE#         141
+  C:02DDH         LINE#         143
+  C:02DFH         LINE#         144
+  C:02E1H         LINE#         145
   -------         ENDPROC       _SEND_DATA_COT
   -------         PROC          _SEND_DATA_COT_1
   D:0006H         SYMBOL        _data
@@ -284,119 +218,119 @@ SYMBOL TABLE OF MODULE:  .\Objects\main (MAIN)
   D:0005H         SYMBOL        n
   D:0002H         SYMBOL        tam
   -------         ENDDO         
-  C:037EH         LINE#         143
-  C:037EH         LINE#         147
-  C:0380H         LINE#         148
-  C:0382H         LINE#         149
-  C:0384H         LINE#         150
-  C:0390H         LINE#         151
-  C:0390H         LINE#         152
-  C:0394H         LINE#         153
-  C:039BH         LINE#         155
-  C:039FH         LINE#         156
-  C:039FH         LINE#         157
-  C:03A1H         LINE#         158
-  C:03A3H         LINE#         159
-  C:03A5H         LINE#         160
-  C:03A5H         LINE#         162
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 6
-
-
-  C:03A7H         LINE#         163
-  C:03A9H         LINE#         164
-  C:03ACH         LINE#         166
-  C:03AEH         LINE#         167
-  C:03B0H         LINE#         168
+  C:02E2H         LINE#         147
+  C:02E2H         LINE#         151
+  C:02E4H         LINE#         152
+  C:02E6H         LINE#         153
+  C:02E8H         LINE#         154
+  C:02F4H         LINE#         155
+  C:02F4H         LINE#         156
+  C:02F8H         LINE#         157
+  C:02FFH         LINE#         159
+  C:0303H         LINE#         160
+  C:0303H         LINE#         161
+  C:0305H         LINE#         162
+  C:0307H         LINE#         163
+  C:0309H         LINE#         164
+  C:0309H         LINE#         166
+  C:030BH         LINE#         167
+  C:030DH         LINE#         168
+  C:0310H         LINE#         170
+  C:0312H         LINE#         171
+  C:0314H         LINE#         172
   -------         ENDPROC       _SEND_DATA_COT_1
-  -------         PROC          _IC2DISPLAY_1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:35:37  PAGE 5
+
+
+  -------         PROC          _DISPLAY_1
   D:0008H         SYMBOL        d
   D:000BH         SYMBOL        r
   -------         DO            
   D:0007H         SYMBOL        j
   -------         ENDDO         
-  C:03B1H         LINE#         170
-  C:03B7H         LINE#         172
-  C:03C3H         LINE#         173
-  C:03DFH         LINE#         174
-  C:03E2H         LINE#         175
-  -------         ENDPROC       _IC2DISPLAY_1
-  -------         PROC          _IC2DISPLAY_2
+  C:0315H         LINE#         174
+  C:031BH         LINE#         176
+  C:0327H         LINE#         177
+  C:0343H         LINE#         178
+  C:0346H         LINE#         179
+  -------         ENDPROC       _DISPLAY_1
+  -------         PROC          _DISPLAY_2
   D:0008H         SYMBOL        d
   D:000BH         SYMBOL        r
   -------         DO            
   D:000EH         SYMBOL        j
   -------         ENDDO         
-  C:030EH         LINE#         177
-  C:0314H         LINE#         179
-  C:0322H         LINE#         180
-  C:0346H         LINE#         181
-  C:034AH         LINE#         182
-  -------         ENDPROC       _IC2DISPLAY_2
+  C:0272H         LINE#         181
+  C:0278H         LINE#         183
+  C:0286H         LINE#         184
+  C:02AAH         LINE#         185
+  C:02AEH         LINE#         186
+  -------         ENDPROC       _DISPLAY_2
   -------         ENDMOD        MAIN
 
   -------         MODULE        DELAY
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:04E7H         PUBLIC        _delay_ms
+  C:0397H         PUBLIC        _delay_ms
   -------         PROC          _DELAY_MS
   D:0006H         SYMBOL        Time
   -------         DO            
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:04E7H         LINE#         19
-  C:04E7H         LINE#         20
-  C:04E7H         LINE#         22
-  C:04F1H         LINE#         23
-  C:04F1H         LINE#         24
-  C:04FFH         LINE#         25
-  C:0506H         LINE#         26
+  C:0397H         LINE#         19
+  C:0397H         LINE#         20
+  C:0397H         LINE#         22
+  C:03A1H         LINE#         23
+  C:03A1H         LINE#         24
+  C:03AFH         LINE#         25
+  C:03B6H         LINE#         26
   -------         ENDPROC       _DELAY_MS
   -------         ENDMOD        DELAY
 
   -------         MODULE        I2C
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00B0H         PUBLIC        P3
-  C:04C4H         PUBLIC        I2C_read
-  C:0507H         PUBLIC        _I2C_write
+  C:0374H         PUBLIC        I2C_read
+  C:03B7H         PUBLIC        _I2C_write
   B:00B0H.1       PUBLIC        SDA
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 7
-
-
-  C:057FH         PUBLIC        I2C_time_start
+  C:03EDH         PUBLIC        I2C_time_start
   B:00B0H.0       PUBLIC        SCL
-  C:0588H         PUBLIC        I2C_time_stop
+  C:03F6H         PUBLIC        I2C_time_stop
   -------         PROC          I2C_TIME_START
-  C:057FH         LINE#         8
-  C:057FH         LINE#         9
-  C:0581H         LINE#         10
-  C:0583H         LINE#         11
-  C:0585H         LINE#         12
-  C:0587H         LINE#         13
+  C:03EDH         LINE#         8
+  C:03EDH         LINE#         9
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:35:37  PAGE 6
+
+
+  C:03EFH         LINE#         10
+  C:03F1H         LINE#         11
+  C:03F3H         LINE#         12
+  C:03F5H         LINE#         13
   -------         ENDPROC       I2C_TIME_START
   -------         PROC          I2C_TIME_STOP
-  C:0588H         LINE#         14
-  C:0588H         LINE#         15
-  C:058AH         LINE#         16
-  C:058CH         LINE#         17
-  C:058EH         LINE#         18
-  C:0590H         LINE#         19
+  C:03F6H         LINE#         14
+  C:03F6H         LINE#         15
+  C:03F8H         LINE#         16
+  C:03FAH         LINE#         17
+  C:03FCH         LINE#         18
+  C:03FEH         LINE#         19
   -------         ENDPROC       I2C_TIME_STOP
   -------         PROC          _I2C_WRITE
   D:0007H         SYMBOL        dat
   -------         DO            
   D:0006H         SYMBOL        i
   -------         ENDDO         
-  C:0507H         LINE#         20
-  C:0507H         LINE#         22
-  C:0513H         LINE#         23
-  C:0517H         LINE#         24
-  C:0519H         LINE#         25
-  C:051BH         LINE#         26
-  C:051FH         LINE#         27
-  C:0522H         LINE#         28
-  C:0524H         LINE#         29
-  C:0526H         LINE#         30
-  C:0526H         LINE#         31
+  C:03B7H         LINE#         20
+  C:03B7H         LINE#         22
+  C:03C3H         LINE#         23
+  C:03C7H         LINE#         24
+  C:03C9H         LINE#         25
+  C:03CBH         LINE#         26
+  C:03CFH         LINE#         27
+  C:03D2H         LINE#         28
+  C:03D4H         LINE#         29
+  C:03D6H         LINE#         30
+  C:03D6H         LINE#         31
   -------         ENDPROC       _I2C_WRITE
   -------         PROC          I2C_READ
   -------         DO            
@@ -404,175 +338,34 @@ SYMBOL TABLE OF MODULE:  .\Objects\main (MAIN)
   D:0006H         SYMBOL        i
   D:0007H         SYMBOL        dat
   -------         ENDDO         
-  C:04C4H         LINE#         32
-  C:04C4H         LINE#         35
-  C:04C6H         LINE#         36
-  C:04D1H         LINE#         38
-  C:04D3H         LINE#         39
-  C:04D7H         LINE#         40
-  C:04DBH         LINE#         41
-  C:04E1H         LINE#         42
-  C:04E3H         LINE#         43
-  C:04E6H         LINE#         44
-  C:04E6H         LINE#         45
+  C:0374H         LINE#         32
+  C:0374H         LINE#         35
+  C:0376H         LINE#         36
+  C:0381H         LINE#         38
+  C:0383H         LINE#         39
+  C:0387H         LINE#         40
+  C:038BH         LINE#         41
+  C:0391H         LINE#         42
+  C:0393H         LINE#         43
+  C:0396H         LINE#         44
+  C:0396H         LINE#         45
   -------         ENDPROC       I2C_READ
   -------         ENDMOD        I2C
 
-  -------         MODULE        DS1307
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 8
-
-
-  C:0000H         SYMBOL        _ICE_DUMMY_
-  D:000FH         PUBLIC        month
-  D:0010H         PUBLIC        year
-  D:0011H         PUBLIC        sec
-  D:0012H         PUBLIC        day
-  D:0013H         PUBLIC        hour
-  C:02C7H         PUBLIC        _DS1307_Read
-  D:0014H         PUBLIC        min
-  C:0413H         PUBLIC        _DS1307_Write
-  C:0569H         PUBLIC        DS1307_GetDate
-  C:049AH         PUBLIC        DS1307_Set
-  C:0553H         PUBLIC        DS1307_GetTime
-  -------         PROC          _DS1307_WRITE
-  D:001AH         SYMBOL        addr
-  D:001BH         SYMBOL        dat
-  -------         DO            
-  D:0006H         SYMBOL        temp
-  -------         ENDDO         
-  C:0413H         LINE#         7
-  C:0417H         LINE#         9
-  C:041BH         LINE#         10
-  C:042EH         LINE#         11
-  C:0431H         LINE#         12
-  C:0436H         LINE#         13
-  C:043BH         LINE#         14
-  C:0440H         LINE#         15
-  -------         ENDPROC       _DS1307_WRITE
-  -------         PROC          _DS1307_READ
-  D:0015H         SYMBOL        addr
-  -------         DO            
-  D:0002H         SYMBOL        tm
-  D:0016H         SYMBOL        ret
-  -------         ENDDO         
-  C:02C7H         LINE#         17
-  C:02C9H         LINE#         19
-  C:02CCH         LINE#         20
-  C:02D1H         LINE#         21
-  C:02D6H         LINE#         22
-  C:02D9H         LINE#         23
-  C:02DEH         LINE#         24
-  C:02E6H         LINE#         25
-  C:02E9H         LINE#         26
-  C:02E9H         LINE#         27
-  C:030BH         LINE#         28
-  C:030DH         LINE#         29
-  -------         ENDPROC       _DS1307_READ
-  -------         PROC          DS1307_SET
-  C:049AH         LINE#         30
-  C:049AH         LINE#         32
-  C:04A1H         LINE#         33
-  C:04A8H         LINE#         34
-  C:04AFH         LINE#         35
-  C:04B6H         LINE#         36
-  C:04BDH         LINE#         37
-  -------         ENDPROC       DS1307_SET
-  -------         PROC          DS1307_GETTIME
-  C:0553H         LINE#         39
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 9
-
-
-  C:0553H         LINE#         41
-  C:055AH         LINE#         42
-  C:0561H         LINE#         43
-  C:0568H         LINE#         44
-  -------         ENDPROC       DS1307_GETTIME
-  -------         PROC          DS1307_GETDATE
-  C:0569H         LINE#         46
-  C:0569H         LINE#         48
-  C:0570H         LINE#         49
-  C:0577H         LINE#         50
-  C:057EH         LINE#         51
-  -------         ENDPROC       DS1307_GETDATE
-  -------         ENDMOD        DS1307
-
   -------         MODULE        ?C?CLDOPTR
-  C:00EEH         PUBLIC        ?C?CLDOPTR
+  C:017AH         PUBLIC        ?C?CLDOPTR
   -------         ENDMOD        ?C?CLDOPTR
 
   -------         MODULE        ?C?CSTOPTR
-  C:011BH         PUBLIC        ?C?CSTOPTR
+  C:01A7H         PUBLIC        ?C?CSTOPTR
   -------         ENDMOD        ?C?CSTOPTR
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:35:37  PAGE 7
+
+
 
   -------         MODULE        ?C?IMUL
-  C:013DH         PUBLIC        ?C?IMUL
+  C:01C9H         PUBLIC        ?C?IMUL
   -------         ENDMOD        ?C?IMUL
 
-  -------         MODULE        ?C?UIDIV
-  C:014FH         PUBLIC        ?C?UIDIV
-  -------         ENDMOD        ?C?UIDIV
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  MIN
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  HOUR
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  DAY
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  SEC
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  YEAR
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  MONTH
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  DS1307_GETDATE
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/09/2023  01:27:02  PAGE 10
-
-
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  DS1307_GETTIME
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  DS1307_SET
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  _DS1307_READ
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
-    SYMBOL:  _DS1307_WRITE
-    MODULE:  .\Objects\ds1307.obj (DS1307)
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DS1307_SET?MAIN
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DS1307_GETDATE?MAIN
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DS1307_SET?DS1307
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DS1307_GETTIME?DS1307
-
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DS1307_GETDATE?DS1307
-
-Program Size: data=102.1 xdata=0 code=1425
-LINK/LOCATE RUN COMPLETE.  5 WARNING(S),  11 ERROR(S)
+Program Size: data=89.1 xdata=0 code=1023
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

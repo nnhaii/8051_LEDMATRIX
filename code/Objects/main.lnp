@@ -1,6 +1,5 @@
 ".\Objects\main.obj",
 ".\Objects\delay.obj",
-".\Objects\i2c.obj",
-".\Objects\ds1307.obj" 
+".\Objects\i2c.obj" 
 TO ".\Objects\main" 
 PRINT(".\Listings\main.m51") RAMSIZE(256) 

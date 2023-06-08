@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   I2C                                                               06/09/2023 01:27:02 PAGE 1   
+C51 COMPILER V9.60.0.0   I2C                                                               06/09/2023 01:35:37 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE I2C
@@ -8,7 +8,7 @@ COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE i2c.c OPTIMIZE(8,SPEED) BROWSE D
 
 line level    source
 
-   1          /****************Khai báo chân giao tiep I2C***************************/ 
+   1          /****************Khai bao chan giao tiep I2C***************************/ 
    2          #include <regx52.h>
    3          
    4          sbit SCL = P3^0;
@@ -62,7 +62,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.60.0.0   I2C                                                               06/09/2023 01:27:02 PAGE 2   
+C51 COMPILER V9.60.0.0   I2C                                                               06/09/2023 01:35:37 PAGE 2   
 
    BIT SIZE         =   ----       1
 END OF MODULE INFORMATION.

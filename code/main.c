@@ -1,11 +1,17 @@
-#include<main.h>
+	/******************************************************************************
+	* Ten tep:		delay.h
+	* Tac gia:	 	Nguyen Nam Hai
+	* Ngay:				01-04-2023
+	******************************************************************************/
+#include <main.h>
 
-#include"i2c.h"
+#include "i2c.h"
+
 
 void Send_data_cot(unsigned int _data);
 void Send_data_cot_1(unsigned int _data);
-void IC2DISPLAY_1(unsigned char d[8], unsigned char r[16]);
-void IC2DISPLAY_2(unsigned char d[8], unsigned char r[16]);
+void DISPLAY_1(unsigned char d[8], unsigned char r[16]);
+void DISPLAY_2(unsigned char d[8], unsigned char r[16]);
 //===========================dinh nghia cac chan vao ra======================//
 sbit SH_CP = P0^0; //dinh nghia chan SH_CP o P0^0
 sbit DS = P0^1; //dinh nghia chan DS o P0^1
@@ -17,22 +23,14 @@ sbit ST_CP_1 = P0^5; //dinh nghia chan ST_CP o P0^2
 //============================khai bao bien va hang==========================//
 unsigned char t_h[16], t_m[16];
 unsigned int b[16] = {
-  0x0001, 0x0002, 0x0004, 0x0008,
-  0x0010,
-  0x0020,
-  0x0040,
-  0x0080,
-  0x0100,
-  0x0200,
-  0x0400,
-  0x0800,
-  0x1000,
-  0x2000,
-  0x4000,
-  0x8000
+  0x0001, 0x0002, 0x0004, 0x0008, 
+	0x0010, 0x0020, 0x0040, 0x0080, 
+	0x0100, 0x0200, 0x0400, 0x0800, 
+	0x1000, 0x2000, 0x4000, 0x8000
 };
 unsigned char i = 0, k = 0, j = 0;
-
+unsigned char sec, min, hour, day, month, year;
+//============================DS1307==========================//
 #define DS1307_SEC 0x00 //Giay
 #define DS1307_MIN 0x01 //Phut
 #define DS1307_HOUR 0x02 //Gio
@@ -41,18 +39,17 @@ unsigned char i = 0, k = 0, j = 0;
 #define DS1307_MONTH 0x05 //Thang
 #define DS1307_YEAR 0x06 //Nam
 
-unsigned char sec, min, hour, day, month, year;
 
-void DS1307_Write(unsigned char addr, unsigned char dat) {
-  unsigned int temp;
-  temp = dat; /*HEX to BCD*/
-  dat = (((dat / 10) * 16) | (temp % 10)); /*for Led 7seg*/
-  I2C_time_start(); /* time_start i2c bus */
-  I2C_write(0XD0); /* Connect to DS1307 */
-  I2C_write(addr); /* Requetime_5 RAM address on DS1307 */
-  I2C_write(dat);
-  I2C_time_stop();
-}
+//void DS1307_Write(unsigned char addr, unsigned char dat) {
+//  unsigned int temp;
+//  temp = dat; /*HEX to BCD*/
+//  dat = (((dat / 10) * 16) | (temp % 10)); /*for Led 7seg*/
+//  I2C_time_start(); /* time_start i2c bus */
+//  I2C_write(0XD0); /* Connect to DS1307 */
+//  I2C_write(addr); /* Requetime_5 RAM address on DS1307 */
+//   I2C_write(dat);
+//  I2C_time_stop();
+//}
 unsigned char DS1307_Read(unsigned char addr) {
   unsigned int tm, ret;
   I2C_time_start(); /* time_start i2c bus */
@@ -66,6 +63,7 @@ unsigned char DS1307_Read(unsigned char addr) {
   ret = (((ret / 16) * 10) + (tm & 0x0f)); /*for Led 7seg*/
   return ret;
 }
+/*
 void DS1307_Set() {
   //Ghi du lieu ngay gio vao DS1307
   DS1307_Write(DS1307_SEC, sec);
@@ -75,30 +73,36 @@ void DS1307_Set() {
   DS1307_Write(DS1307_MONTH, month);
   DS1307_Write(DS1307_YEAR, year);
 }
+*/
 void DS1307_GetTime() {
   //Doc du lieu gio tu DS1307
   hour = DS1307_Read(DS1307_HOUR);
   min = DS1307_Read(DS1307_MIN);
   sec = DS1307_Read(DS1307_SEC);
 }
+/*
 void DS1307_GetDate() {
   //Doc du lieu ngay tu DS1307
   day = DS1307_Read(DS1307_DATE);
   month = DS1307_Read(DS1307_MONTH);
   year = DS1307_Read(DS1307_YEAR);
-} //End code DS1307
+}
+*/
+//End code DS1307
+
 //============================HAM MAIN=======================================//
 int main() {
+
   // Initialize I2C communication
+	DS1307_GetTime();
   while (1) {
-    DS1307_GetTime();
     hour = DS1307_Read(DS1307_HOUR);
     min = DS1307_Read(DS1307_MIN);
 
-    IC2DISPLAY_1(so[hour / 10], t_h);
-    IC2DISPLAY_2(so[hour % 10], t_h);
-    IC2DISPLAY_1(so[min / 10], t_m);
-    IC2DISPLAY_2(so[min % 10], t_m);
+    DISPLAY_1(so[hour / 10], t_h);
+    DISPLAY_2(so[hour % 10], t_h);
+    DISPLAY_1(so[min / 10], t_m);
+    DISPLAY_2(so[min % 10], t_m);
 
     for (i = 0; i < 16; i++) //quet COT thu 1 den thu 16, cho COT=0 roi goi du lieu ra cot do
     {
@@ -167,14 +171,14 @@ void Send_data_cot_1(unsigned int _data) {
   ST_CP_1 = 0;
 }
 
-void IC2DISPLAY_1(unsigned char d[8], unsigned char r[16]) {
+void DISPLAY_1(unsigned char d[8], unsigned char r[16]) {
   unsigned char j;
   for (j = 0; j < 8; j++) {
     r[j] = d[j];
   }
 }
 
-void IC2DISPLAY_2(unsigned char d[8], unsigned char r[16]) {
+void DISPLAY_2(unsigned char d[8], unsigned char r[16]) {
   unsigned char j;
   for (j = 0; j < 8; j++) {
     r[j + 8] = d[j];

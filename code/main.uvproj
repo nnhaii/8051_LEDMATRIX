@@ -397,11 +397,6 @@
               <FilePath>.\delay.h</FilePath>
             </File>
             <File>
-              <FileName>ds1307.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ds1307.h</FilePath>
-            </File>
-            <File>
               <FileName>i2c.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\i2c.h</FilePath>
@@ -410,11 +405,6 @@
               <FileName>i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>ds1307.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ds1307.c</FilePath>
             </File>
           </Files>
         </Group>
