@@ -1,0 +1,107 @@
+C51 COMPILER V9.60.0.0   MAIN_1                                                            04/03/2023 15:27:34 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN_1
+OBJECT MODULE PLACED IN .\Objects\main_1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main_1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ma
+                    -in_1.lst) TABS(2) OBJECT(.\Objects\main_1.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          sbit SCLK=P3^6; // SCLK pin of 74HC595
+   4          sbit RCLK=P3^5; // RCLK pin of 74HC595
+*** ERROR C231 IN LINE 4 OF main_1.c: 'RCLK': redefinition
+   5          sbit SER=P3^4; // SER pin of 74HC595
+   6          
+   7          unsigned char column[8]={0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}; // column data for 8x8 LED matri
+             -x
+   8          unsigned char digit[10]={0x7E, 0x30, 0x6D, 0x79, 0x33, 0x5B, 0x5F, 0x70, 0x7F, 0x7B}; // digit patterns fo
+             -r 7-segment display
+   9          
+  10          void delay_ms(unsigned int ms)
+  11          {
+  12   1          unsigned int i, j;
+  13   1      
+  14   1          for (i = 0; i < ms; i++)
+  15   1              for (j = 0; j < 125; j++);
+  16   1      }
+  17          
+  18          void shift_out(unsigned char value)
+  19          {
+  20   1          unsigned char i;
+  21   1      
+  22   1          for (i = 0; i < 8; i++)
+  23   1          {
+  24   2              SER = value & 0x80;
+  25   2              SCLK = 0;
+  26   2              SCLK = 1;
+  27   2              value <<= 1;
+  28   2          }
+  29   1      }
+  30          
+  31          void update_column(unsigned char col)
+  32          {
+  33   1          unsigned char i;
+  34   1      
+  35   1          RCLK = 0;
+  36   1          shift_out(~col);
+  37   1          shift_out(0xFF);
+  38   1          RCLK = 1;
+  39   1          delay_ms(1);
+  40   1          RCLK = 0;
+  41   1      
+  42   1          for (i = 0; i < 8; i++)
+  43   1          {
+  44   2              SCLK = 0;
+  45   2              SCLK = 1;
+  46   2              column[i] <<= 1;
+  47   2          }
+  48   1      }
+  49          
+  50          void display_digit(unsigned char digit)
+  51          {
+C51 COMPILER V9.60.0.0   MAIN_1                                                            04/03/2023 15:27:34 PAGE 2   
+
+  52   1          unsigned char i;
+  53   1      
+  54   1          for (i = 0; i < 8; i++)
+  55   1          {
+  56   2              if (digit & (1 << i))
+  57   2                  column[i] |= 0x01;
+  58   2              else
+  59   2                  column[i] &= 0xFE;
+  60   2          }
+  61   1      }
+  62          
+  63          void display_time(unsigned char sec)
+  64          {
+  65   1          unsigned char digit1, digit2;
+  66   1      
+  67   1          digit1 = sec / 10;
+  68   1          digit2 = sec % 10;
+  69   1      
+  70   1          display_digit(digit[digit1]);
+  71   1          update_column(column[0]);
+  72   1          display_digit(digit[digit2]);
+  73   1          update_column(column[1]);
+  74   1      }
+  75          
+  76          void main()
+  77          {
+  78   1          unsigned char sec = 0;
+  79   1      
+  80   1          while (1)
+  81   1          {
+  82   2              display_time(sec);
+  83   2      
+  84   2              sec++;
+  85   2              if (sec == 60)
+  86   2                  sec = 0;
+  87   2      
+  88   2              delay_ms(1000);
+  89   2          }
+  90   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)

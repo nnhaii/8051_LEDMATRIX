@@ -1,0 +1,77 @@
+C51 COMPILER V9.60.0.0   DS1307                                                            06/09/2023 01:27:02 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DS1307
+OBJECT MODULE PLACED IN .\Objects\ds1307.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ds1307.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ds
+                    -1307.lst) TABS(2) OBJECT(.\Objects\ds1307.obj)
+
+line level    source
+
+   1          
+   2          #include "ds1307.h"
+   3          #include "i2c.h"
+   4          
+   5          unsigned char sec, min, hour, day, month, year;
+   6          
+   7          void DS1307_Write(unsigned char addr, unsigned char dat) {
+   8   1        unsigned int temp;
+   9   1        temp = dat; /*HEX to BCD*/
+  10   1        dat = (((dat / 10) * 16) | (temp % 10)); /*for Led 7seg*/
+  11   1        I2C_time_start(); /* time_start i2c bus */
+  12   1        I2C_write(0XD0); /* Connect to DS1307 */
+  13   1        I2C_write(addr); /* Requetime_5 RAM address on DS1307 */
+  14   1        I2C_write(dat);
+  15   1        I2C_time_stop();
+  16   1      }
+  17          unsigned char DS1307_Read(unsigned char addr) {
+  18   1        unsigned int tm, ret;
+  19   1        I2C_time_start(); /* time_start i2c bus */
+  20   1        I2C_write(0xD0); /* Connect to DS1307 */
+  21   1        I2C_write(addr); /* Requetime_5 RAM address on DS1307 */
+  22   1        I2C_time_start(); /* time_start i2c bus */
+  23   1        I2C_write(0XD1); /* Connect to DS1307 for Read */
+  24   1        ret = I2C_read(); /* Receive data */
+  25   1        I2C_time_stop();
+  26   1        tm = ret; /*BCD to HEX*/
+  27   1        ret = (((ret / 16) * 10) + (tm & 0x0f)); /*for Led 7seg*/
+  28   1        return ret;
+  29   1      }
+  30          void DS1307_Set() {
+  31   1        //Ghi du lieu ngay gio vao DS1307
+  32   1        DS1307_Write(DS1307_SEC, sec);
+  33   1        DS1307_Write(DS1307_MIN, min);
+  34   1        DS1307_Write(DS1307_HOUR, hour);
+  35   1        DS1307_Write(DS1307_DATE, day);
+  36   1        DS1307_Write(DS1307_MONTH, month);
+  37   1        DS1307_Write(DS1307_YEAR, year);
+  38   1      }
+  39          void DS1307_GetTime() {
+  40   1        //Doc du lieu gio tu DS1307
+  41   1        hour = DS1307_Read(DS1307_HOUR);
+  42   1        min = DS1307_Read(DS1307_MIN);
+  43   1        sec = DS1307_Read(DS1307_SEC);
+  44   1      }
+  45          
+  46          void DS1307_GetDate() {
+  47   1        //Doc du lieu ngay tu DS1307
+  48   1        day = DS1307_Read(DS1307_DATE);
+  49   1        month = DS1307_Read(DS1307_MONTH);
+  50   1        year = DS1307_Read(DS1307_YEAR);
+  51   1      } //End code DS1307
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.60.0.0   DS1307                                                            06/09/2023 01:27:02 PAGE 2   
+
+   CODE SIZE        =    205    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
